@@ -3,7 +3,9 @@ package dev.danvega.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -18,8 +20,10 @@ public class Task {
     private String uid;
     private String name;
     private String type;
-    private Date startDate;
-    private Date endDate;
+    @Basic
+    private java.sql.Date startDate;
+    @Basic
+    private java.sql.Date endDate;
     private String parentUid;
 
     public Task() {
