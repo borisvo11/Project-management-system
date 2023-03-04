@@ -29,6 +29,20 @@ public class TaskService {
         repository.saveAll(tasks);
     }
 
+    public void updateDate(String uid,java.sql.Date startDate,java.sql.Date endDate) {
+        List<Task> task = repository.findByUid(uid);
+        task.get(0).setStartDate(startDate);
+        task.get(0).setEndDate(endDate);
+        repository.save(task.get(0));
+    }
+
+    public void deleteTask(String uid) {
+        repository.deleteByUid(uid);
+    }
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
     public void updateStatus(Task task) {
         if (task.getType().equals("TASK")) {
             while (true) {

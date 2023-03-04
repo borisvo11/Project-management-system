@@ -2,9 +2,7 @@ package dev.danvega.controller;
 
 import dev.danvega.model.Task;
 import dev.danvega.service.TaskService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/tasks")
@@ -19,6 +17,12 @@ public class TaskController {
     @GetMapping("/list")
     public Iterable<Task> list() {
         return service.list();
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        service.delete(id);
+//        service.deleteTask(uid);
     }
 
 }

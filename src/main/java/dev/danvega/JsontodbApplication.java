@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootApplication
 public class JsontodbApplication {
@@ -32,10 +33,14 @@ public class JsontodbApplication {
             };
             InputStream inputStream = TypeReference.class.getResourceAsStream("/json/proj.json");
             try {
-                List<Task> tasks = mapper.readValue(inputStream, typeReference);
-                for (Task task : tasks) {
-                    taskService.save(task);
-                    taskService.updateStatus(task);
+                Map<String, List<Task>> userData = mapper.readValue(
+                        inputStream, new TypeReference<Map<String, List<Task>>>() {
+                        });
+                for (List<Task> value : userData.values()) {
+                    for (Task task : value) {
+                        taskService.save(task);
+                        taskService.updateStatus(task);
+                    }
                 }
                 System.out.println("Tasks Saved!");
             } catch (IOException e) {
