@@ -15,7 +15,7 @@ public class TaskController {
     }
 
     // all tasks
-    @GetMapping("/list")
+    @GetMapping("/tasks/list")
     public Iterable<Task> list() {
         return service.list();
     }
@@ -26,10 +26,16 @@ public class TaskController {
         return service.saveNewTask(newTask);
     }
 
-    // Task by Uid
+    //Task by Uid
     @GetMapping("/tasks/{uid}")
     Task oneTask(@PathVariable String uid) {
         return service.findTask(uid);
+    }
+
+    //completion status task by Uid
+    @GetMapping("/tasks/{uid}/{date}")
+    String status(@PathVariable String uid,@PathVariable String date) {
+        return service.statusTask(uid,date);
     }
 
     //Update Date of task
@@ -39,7 +45,7 @@ public class TaskController {
     }
 
     // delete by Uid
-    @DeleteMapping("/tasks{uid}")
+    @DeleteMapping("/tasks/{uid}")
     public void delete(@PathVariable String uid) {
         service.deleteTask(uid);
     }
