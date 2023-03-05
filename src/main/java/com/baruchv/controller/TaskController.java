@@ -1,7 +1,7 @@
-package dev.danvega.controller;
+package com.baruchv.controller;
 
-import dev.danvega.model.Task;
-import dev.danvega.service.TaskService;
+import com.baruchv.model.Task;
+import com.baruchv.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

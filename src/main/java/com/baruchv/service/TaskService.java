@@ -1,8 +1,7 @@
-package dev.danvega.service;
+package com.baruchv.service;
 
-import dev.danvega.model.Task;
-import dev.danvega.repository.TaskRepository;
-import dev.danvega.util.TimeZero;
+import com.baruchv.model.Task;
+import com.baruchv.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

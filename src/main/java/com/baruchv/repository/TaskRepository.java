@@ -1,8 +1,6 @@
-package dev.danvega.repository;
+package com.baruchv.repository;
 
-import dev.danvega.domain.User;
-import dev.danvega.model.Task;
-import org.springframework.data.jpa.repository.Query;
+import com.baruchv.model.Task;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

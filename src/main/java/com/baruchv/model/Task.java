@@ -1,4 +1,4 @@
-package dev.danvega.model;
+package com.baruchv.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

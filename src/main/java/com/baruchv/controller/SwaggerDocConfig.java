@@ -1,4 +1,4 @@
-package dev.danvega.controller;
+package com.baruchv.controller;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
