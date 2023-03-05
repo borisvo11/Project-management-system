@@ -5,7 +5,7 @@ import dev.danvega.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/tasks")
+//@RequestMapping("/tasks")
 public class TaskController {
 
     private TaskService service;
@@ -14,16 +14,34 @@ public class TaskController {
         this.service = service;
     }
 
+    // all tasks
     @GetMapping("/list")
     public Iterable<Task> list() {
         return service.list();
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
-        service.delete(id);
-//        service.deleteTask(uid);
+    //new task
+    @PostMapping("/tasks")
+    Task newEmployee(@RequestBody Task newTask) {
+        return service.saveNewTask(newTask);
     }
 
+    // Task by Uid
+    @GetMapping("/tasks/{uid}")
+    Task oneTask(@PathVariable String uid) {
+        return service.findTask(uid);
+    }
+
+    //Update Date of task
+    @PutMapping("/tasks/{uid}")
+    Task updateTask(@RequestBody Task newTask, @PathVariable String uid) {
+        return service.updateDateTask(newTask,uid);
+    }
+
+    // delete by Uid
+    @DeleteMapping("/tasks{uid}")
+    public void delete(@PathVariable String uid) {
+        service.deleteTask(uid);
+    }
 }
 
