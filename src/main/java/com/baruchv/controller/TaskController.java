@@ -2,6 +2,7 @@ package com.baruchv.controller;
 
 import com.baruchv.model.Task;
 import com.baruchv.service.TaskService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,8 @@ public class TaskController {
 
     // all tasks
     @GetMapping("/tasks/list")
+//    @RequestMapping(value = "/tasks/list", method = RequestMethod.GET)
+    @ApiOperation(value = "To get all list",response = Task.class,code = 200)
     public Iterable<Task> list() {
         return service.list();
     }

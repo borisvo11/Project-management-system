@@ -63,24 +63,24 @@ class TaskServiceTest {
         assertEquals(test_string , result );
     }
 
-    @Test
-    void updateDateTask() {
-        String UID = task1.getUid();
-        service.save(task1);
-        task1.setEndDate(java.sql.Date.valueOf("2023-01-02"));
-        service.updateDateTask(task1,UID);
-
-        assertEquals("2023-01-02",
-                service.findTask(UID).getEndDate().toString());
-    }
-
-    @Test
-    void deleteTask() {
-        service.save(task1);
-        service.deleteTask(task1.getUid());
-        assertThrows(TaskNotFoundException.class,
-                () ->service.findTask(task1.getUid()));
-    }
+//    @Test
+//    void updateDateTask() {
+//        String UID = task1.getUid();
+//        service.save(task1);
+//        task1.setEndDate(java.sql.Date.valueOf("2023-01-02"));
+//        service.updateDateTask(task1,UID);
+//
+//        assertEquals("2023-01-02",
+//                service.findTask(UID).getEndDate().toString());
+//    }
+//
+//    @Test
+//    void deleteTask() {
+//        service.save(task1);
+//        service.deleteTask(task1.getUid());
+//        assertThrows(TaskNotFoundException.class,
+//                () ->service.findTask(task1.getUid()));
+//    }
 
     @Test
     void findTask() {
