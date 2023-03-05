@@ -56,7 +56,7 @@ public class TaskService {
         }
         LocalDate startDate = task.getStartDate().toLocalDate();
         LocalDate endDate = task.getEndDate().toLocalDate();
-        //boolean date_compare =
+
         if (dt.isBefore(startDate))
             return "At " + dt + ": 0% (not started yet)";
         if (dt.equals(startDate))

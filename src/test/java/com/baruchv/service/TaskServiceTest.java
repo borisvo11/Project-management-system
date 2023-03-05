@@ -38,6 +38,7 @@ class TaskServiceTest {
         project1.setEndDate(java.sql.Date.valueOf("2021-10-11"));
         project1.setParentUid("111");
     }
+
     @Autowired
     TaskService service;
 
@@ -45,55 +46,29 @@ class TaskServiceTest {
     void save() {
         service.save(task1);
         testTask = service.findTask(task1.getUid());
-        assertEquals(testTask.getUid() , task1.getUid());
+        assertEquals(testTask.getUid(), task1.getUid());
     }
 
     @Test
     void saveNewTask() {
         service.save(project1);
         testTask = service.findTask(project1.getUid());
-        assertEquals(testTask.getUid() , project1.getUid());
+        assertEquals(testTask.getUid(), project1.getUid());
     }
 
     @Test
     void statusTask() {
 
-        String result = service.statusTask(task1.getUid(),"2021-10-10");
+        String result = service.statusTask(task1.getUid(), "2021-10-10");
         String test_string = "At 2021-10-10:80.0 %";
-        assertEquals(test_string , result );
+        assertEquals(test_string, result);
     }
-
-//    @Test
-//    void updateDateTask() {
-//        String UID = task1.getUid();
-//        service.save(task1);
-//        task1.setEndDate(java.sql.Date.valueOf("2023-01-02"));
-//        service.updateDateTask(task1,UID);
-//
-//        assertEquals("2023-01-02",
-//                service.findTask(UID).getEndDate().toString());
-//    }
-//
-//    @Test
-//    void deleteTask() {
-//        service.save(task1);
-//        service.deleteTask(task1.getUid());
-//        assertThrows(TaskNotFoundException.class,
-//                () ->service.findTask(task1.getUid()));
-//    }
 
     @Test
     void findTask() {
         service.save(task1);
         Task task = service.findTask("123abcde456");
-        assertEquals(task ,task1 );
+        assertEquals(task, task1);
     }
 
-//    @Test
-//    void updateStatusWithChange() {
-//    }
-//
-//    @Test
-//    void updateStatus() {
-//    }
 }
