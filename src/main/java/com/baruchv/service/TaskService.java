@@ -32,7 +32,6 @@ public class TaskService {
         repository.saveAll(tasks);
     }
 
-    //TODO
     public Task saveNewTask(Task newTask) {
         Task parent;
         try {
